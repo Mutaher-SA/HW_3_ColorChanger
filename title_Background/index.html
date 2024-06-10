@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Color Changer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900 min-h-screen flex items-center justify-center">
+    <div class="p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-4 justify-center">Homework 3-Color Changer</h1>
+        <form id="colorForm" class="space-y-4">
+            <div>
+                <label for="textColor" class="block text-sm font-medium">Select all Text Color</label>
+                <select id="textColor" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                    <option value="text-gray-900">Black</option>
+                    <option value="text-red-500">Red</option>
+                    <option value="text-blue-500">Blue</option>
+                    <option value="text-green-500">Green</option>
+                    <option value="text-yellow-500">Orange</option>
+                </select>
+            </div>
+            <div>
+                <label for="bgColor" class="block text-sm font-medium">Select the Background Color</label>
+                <select id="bgColor" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                    <option value="bg-white">White</option>
+                    <option value="bg-red-500">Red</option>
+                    <option value="bg-blue-500">Blue</option>
+                    <option value="bg-green-500">Green</option>
+                    <option value="bg-yellow-500">Orange</option>
+                </select>
+            </div>
+            <div>
+                <label for="image" class="block text-sm font-medium">Select the Image</label>
+                <select id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+                    <option value="img/Ads.png">Advertising</option>
+                    <option value="img/Travel.png">Travlleing</option>
+                    <option value="img/FB.png">Facebook</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md">Change Colors and Image</button>
+        </form>
+        <div id="imageContainer" class="mt-6">
+            <img id="displayedImage" src="img/MetaIcon.png" alt="Selected Image" class="w-full h-auto rounded-md shadow-md">
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById('colorForm');
+        const displayedImage = document.getElementById('displayedImage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const textColor = document.getElementById('textColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const image = document.getElementById('image').value;
+
+            // Debugging logs
+            console.log('Text Color:', textColor);
+            console.log('Background Color:', bgColor);
+            console.log('Image:', image);
+
+            // Update body classes
+            document.body.className = `${textColor} ${bgColor} min-h-screen flex items-center justify-center`;
+
+            // Update image src
+            displayedImage.src = image;
+        });
+    </script>
+</body>
+</html>
